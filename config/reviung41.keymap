@@ -35,14 +35,14 @@
         &kp TAB &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SEMI &kp BSPC
         &kp LCTRL &kp A &kp R &kp S &kp T &kp G &kp M &kp N &kp E &kp I &kp O &kp SQT
         &kp ESC &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-        &kp LGUI &mo NUMBERS &mt RSHIFT SPACE &mo SYMBOLS &kp LALT
+        &mo NUMBERS &kp LGUI &mt RSHIFT SPACE &mo SYMBOLS &kp LALT
                 >;
         };
 
         SYMBOLS {
 
                 bindings = <
-        &trans &kp TILDE &kp LT &kp LBKT &kp RBKT &kp EXCL &kp PRCNT &kp HOME &kp UP &kp END &kp MINUS &trans
+        &trans &kp TILDE &kp LT &kp LBKT &kp RBKT &kp EXCL &kp PRCNT &kp HOME &kp UP &kp END &kp MINUS &kp DEL
         &trans &kp AMPS &kp GT &kp LPAR &kp RPAR &kp EQUAL &kp CARET &kp LEFT &kp DOWN &kp RIGHT &kp COLON &kp GRAVE
         &trans &kp ASTRK &kp PIPE &kp LBRC &kp RBRC &kp DLLR &trans &trans &kp HASH &kp AT &kp BSLH &trans
         &trans &trans &trans &trans &trans
