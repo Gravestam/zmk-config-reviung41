@@ -17,68 +17,70 @@
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
+
         tri_layer {
             if-layers = <NUMBERS SYMBOLS>;
             then-layer = <MOUSE>;
         };
-
     };
 };
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+    macros {
+        jsArrow: jsArrow {
+            compatible = "zmk,behavior-macro";
+            label = "new_macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &kp EQUAL &kp GT &kp SPACE>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
 
         COLEMAK {
-
-                bindings = <
-        &kp TAB &kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U &kp Y &kp SEMI &kp BSPC
-        &mt LCTRL ESC &kp A &kp R &kp S &kp T &kp G &kp M &kp N &kp E &kp I &kp O &kp SQT
-        &kp LSHIFT &kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RET
-        &mo NUMBERS &kp LGUI &mt RSHIFT SPACE &mo SYMBOLS &kp LALT
-                >;
+            bindings = <
+      &kp TAB  &kp Q  &kp W  &kp F     &kp P  &kp B                    &kp J  &kp L      &kp U    &kp Y  &kp SEMI  &kp BSPC
+&mt LCTRL ESC  &kp A  &kp R  &kp S     &kp T  &kp G                    &kp M  &kp N      &kp E    &kp I     &kp O   &kp SQT
+   &kp LSHIFT  &kp Z  &kp X  &kp C     &kp D  &kp V                    &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH   &kp RET
+                             &mo 2  &kp LGUI         &mt RSHIFT SPACE         &mo 1   &kp LALT
+            >;
         };
 
         SYMBOLS {
-
-                bindings = <
-        &trans &kp TILDE &kp LT &kp LBKT &kp RBKT &kp EXCL &kp PRCNT &kp HOME &kp UP &kp END &kp MINUS &kp DEL
-        &trans &kp AMPS &kp GT &kp LPAR &kp RPAR &kp EQUAL &kp CARET &kp LEFT &kp DOWN &kp RIGHT &kp COLON &kp GRAVE
-        &trans &kp ASTRK &kp PIPE &kp LBRC &kp RBRC &kp DLLR &trans &trans &kp HASH &kp AT &kp BSLH &trans
-        &trans &trans &trans &trans &trans
-                >;
+            bindings = <
+&trans  &kp TILDE    &kp LT  &kp LBKT  &kp RBKT   &kp EXCL          &kp PRCNT  &kp HOME    &kp UP    &kp END  &kp MINUS    &kp DEL
+&trans   &kp AMPS    &kp GT  &kp LPAR  &kp RPAR  &kp EQUAL          &kp CARET  &kp LEFT  &kp DOWN  &kp RIGHT  &kp COLON  &kp GRAVE
+&trans  &kp ASTRK  &kp PIPE  &kp LBRC  &kp RBRC   &kp DLLR             &trans  &jsArrow  &kp HASH     &kp AT   &kp BSLH     &trans
+                               &trans    &trans             &trans               &trans    &trans
+            >;
         };
 
         NUMBERS {
-
-                bindings = <
-        &trans &kp CAPS &kp F7 &kp F8 &kp F9 &kp F10 &kp MINUS &kp N7 &kp N8 &kp N9 &kp PLUS &trans
-        &trans &kp KP_NUM &kp F4 &kp F5 &kp F6 &kp F11 &kp N0 &kp N4 &kp N5 &kp N6 &kp ASTRK &none
-        &trans &kp PSCRN &kp F1 &kp F2 &kp F3 &kp F12 &none &kp N1 &kp N2 &kp N3 &kp FSLH &trans
-        &trans &trans &trans &trans &trans
-                >;
+            bindings = <
+&trans    &kp CAPS  &kp F7  &kp F8  &kp F9  &kp F10          &kp MINUS  &kp N7  &kp N8  &kp N9   &kp PLUS  &trans
+&trans  &kp KP_NUM  &kp F4  &kp F5  &kp F6  &kp F11             &kp N0  &kp N4  &kp N5  &kp N6  &kp ASTRK   &none
+&trans   &kp PSCRN  &kp F1  &kp F2  &kp F3  &kp F12              &none  &kp N1  &kp N2  &kp N3   &kp FSLH  &trans
+                            &trans  &trans           &trans             &trans  &trans
+            >;
         };
 
-        MOUSE {
-
-                bindings = <
-        &none &none &none &none &none &none &none &none &none &none &none &mo SETTINGS
-        &none &none &none &none &none &none &none &none &none &none &none &none
-        &none &none &none &none &none &none &none &none &none &none &none &none
-        &none &trans &none &trans &none
-                >;
+        COMBO {
+            bindings = <
+&none       &none     &none  &kp LG(LC(LEFT_ALT))      &none  &none         &none  &kp HOME    &kp UP    &kp END  &none  &mo 4
+&none  &caps_word  &kp LALT             &kp LSHFT  &kp LCTRL  &none         &none  &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none
+&none       &none     &none                 &none      &none  &none         &none     &none     &none      &none  &none  &none
+                                            &none     &trans         &none           &trans     &none
+            >;
         };
 
         SETTINGS {
-
-                bindings = <
-        &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &none &none &none &none &trans
-        &none &none &none &none &none &none &none &none &none &none &none &none
-        &none &reset &none &none &none &none &none &none &none &none &bootloader &none
-        &none &trans &none &trans &none
-                >;
+            bindings = <
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4         &none       &none  &kp C_VOL_UP  &none        &none  &trans
+     &none         &none         &none         &none         &none         &none         &none  &kp C_MUTE  &kp C_VOL_DN  &none        &none   &none
+     &none        &reset         &none         &none         &none         &none         &none       &none         &none  &none  &bootloader   &none
+                                               &none        &trans                &none             &trans         &none
+            >;
         };
-
-
-        };
+    };
 };
