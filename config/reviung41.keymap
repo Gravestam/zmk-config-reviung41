@@ -28,6 +28,17 @@
             then-layer = <COMBO>;
         };
     };
+	
+	spacebar_layer_tap {
+		compatible = "zmk,behavior-hold-tap";
+		label = "SPACE_LAYER_TAP";
+		#binding-cells = <2>;
+		flavor = "tap-preferred";
+		tapping-term-ms = <200>;
+		quick-tap-ms = <125>;
+		global-quick-tap;
+		bindings = <&mo>, <&kp>;
+	};
 };
 
 / {
@@ -48,7 +59,7 @@
 &kp TAB        &kp Q  &kp W  &kp F     &kp P  &kp B       &kp J             &kp L  &kp U                 &kp Y    &kp SEMI  &kp BSPC
 &mt LCTRL ESC  &kp A  &kp R  &kp S     &kp T  &kp G       &kp M             &kp N  &kp E                 &kp I    &kp O     &kp SQT
 &kp LSHIFT     &kp Z  &kp X  &kp C     &kp D  &kp V       &kp K             &kp H  &kp COMMA             &kp DOT  &kp FSLH  &kp RET
-                             &mo 2  &kp LGUI  &none    &mt RSHIFT SPACE  &mo 1
+                             &mo 2  &kp LGUI  &none    &spacebar_layer_tap 1 SPACE   &kp RALT
             >;
         };
 
@@ -63,7 +74,7 @@
 
         NUMBERS {
             bindings = <
-&trans  &kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
+tran senteirsnt  &kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
 &trans  &kp KP_NUM  &kp F4  &kp F5  &kp F6  &kp F11    &kp N0     &kp N4  &kp N5  &kp N6  &kp ASTRK  &none
 &trans  &kp PSCRN   &kp F1  &kp F2  &kp F3  &kp F12    &none      &kp N1  &kp N2  &kp N3  &kp FSLH   &trans
                             &trans  &trans  &trans     &trans     &trans
@@ -84,7 +95,7 @@
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none       &kp C_VOL_UP  &none  &none        &trans
 &none       &none         &none         &none         &none         &none           &none  &kp C_MUTE  &kp C_VOL_DN  &none  &none        &none
 &none       &sys_reset    &none         &none         &out OUT_USB  &out OUT_BLE    &none  &none       &none         &none  &bootloader  &none
-                                        &none         &trans        &studio_unlock          &none  &trans
+                                        &trans         &trans        &studio_unlock          &trans  &trans
             >;
         };
     };
