@@ -1,10 +1,5 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 800
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 10
 
 #include <behaviors.dtsi>
@@ -21,20 +16,9 @@
 
 / {
     behaviors {
-        spacebar_layer_tap: spacebar_layer_tap {
+        mo_layer_tap: mo_layer_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_LAYER_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            global-quick-tap;
-            bindings = <&mo>, <&kp>;
-        };
-
-        backspace_layer_tap: backspace_layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "BACKSPACE_TAP";
+            label = "MO_LAYER_TAP";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -61,7 +45,7 @@
                 &kp TAB        &kp Q  &kp W  &kp F     &kp P  &kp B       &kp J             &kp L  &kp U                 &kp Y    &kp SEMI  &kp BSPC
                 &mt LCTRL ESC  &kp A  &kp R  &kp S     &mt T  &kp G       &kp M             &kp N  &kp E                 &kp I    &kp O     &kp SQT
                 &kp LSHIFT     &kp Z  &kp X  &kp C     &kp D  &kp V       &kp K             &kp H  &kp COMMA             &kp DOT  &kp FSLH  &mt RSHIFT RET
-                                       &kp LGUI  &backspace_layer_tap NUMBERS BSPC  &mo SETTINGS    &spacebar_layer_tap SYMBOLS SPACE   &kp LALT
+                                       &kp LGUI  &mo_layer_tap NUMBERS BSPC  &mo SETTINGS    &mo_layer_tap SYMBOLS SPACE   &kp LALT
             >;
         };
 
