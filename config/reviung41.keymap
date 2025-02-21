@@ -1,10 +1,5 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 800
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 900
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 10
 
 #include <behaviors.dtsi>
@@ -18,85 +13,100 @@
 #define NUMBERS 2
 #define COMBO 3
 #define SETTINGS 4
+#define MACROS 5
 
 / {
-    behaviors {
-        mo_layer_tap: mo_layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_LAYER_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            global-quick-tap;
-            bindings = <&mo>, <&kp>;
-        };
-    };
+	behaviors {
+		mo_layer_tap: mo_layer_tap {
+			compatible = "zmk,behavior-hold-tap";
+			label = "SPACE_LAYER_TAP";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <125>;
+			global-quick-tap;
+			bindings = <&mo>, <&kp>;
+		};
+	};
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
+	conditional_layers {
+		compatible = "zmk,conditional-layers";
 
-        tri_layer {
-            if-layers = <NUMBERS SYMBOLS>;
-            then-layer = <COMBO>;
-        };
-    };
+		tri_layer {
+			if-layers = <NUMBERS SYMBOLS>;
+			then-layer = <COMBO>;
+		};
+	};
 
-    macros {
-        jsArrow: jsArrow {
-            compatible = "zmk,behavior-macro";
-            label = "new_macro";
-            #binding-cells = <0>;
-            bindings = <&kp SPACE &kp EQUAL &kp GT &kp SPACE>;
-        };
-    };
+	macros {
+		m_mail_personal: m_mail_personal {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <
+				&kp M &kp A &kp R &kp T &kp I &kp N
+				&kp AT
+				&kp G &kp R &kp A &kp V &kp E &kp S &kp T &kp A &kp M
+				&kp DOT
+				&kp S &kp I &kp T &kp E
+			>;
+		};
+	};
 
-    keymap {
-        compatible = "zmk,keymap";
+	keymap {
+		compatible = "zmk,keymap";
 
-        COLEMAK {
-            bindings = <
-                &kp TAB        &kp Q  &kp W  &kp F     &kp P  &kp B       &kp J             &kp L  &kp U                 &kp Y    &kp SEMI  &kp BSPC
-                &mt LCTRL ESC  &kp A  &kp R  &kp S     &kp T  &kp G       &kp M             &kp N  &kp E &kp I    &kp O     &kp SQT
-                &kp LSHIFT     &kp Z  &kp X  &kp C     &kp D  &kp V       &kp K             &kp H  &kp COMMA             &kp DOT  &kp FSLH  &mt RSHIFT RET
-                                       &kp LGUI  &mo_layer_tap NUMBERS BSPC  &mo SETTINGS    &mo_layer_tap SYMBOLS SPACE   &kp RALT
-            >;
-        };
+		COLEMAK {
+			bindings = <
+				&kp TAB        &kp Q  &kp W  &kp F     &kp P  &kp B       &kp J             &kp L  &kp U                 &kp Y    &kp SEMI  &kp BSPC
+				&mt LCTRL ESC  &kp A  &kp R  &kp S     &kp T  &kp G       &kp M             &kp N  &kp E &kp I    &kp O     &kp SQT
+				&kp LSHIFT     &kp Z  &kp X  &kp C     &kp D  &kp V       &kp K             &kp H  &kp COMMA             &kp DOT  &kp FSLH  &mt RSHIFT RET
+				&kp LGUI  &mo NUMBERS  &mo MACROS    &mo_layer_tap SYMBOLS SPACE   &kp LALT
+			>;
+		};
 
-        SYMBOLS {
-            bindings = <
-                &trans  &kp TILDE  &kp LT    &kp LBKT  &kp RBKT  &kp EXCL     &kp PRCNT      &kp HOME  &kp UP    &kp END    &kp MINUS  &kp DEL
-                &trans  &kp AMPS   &kp GT    &kp LPAR  &kp RPAR  &kp EQUAL    &kp CARET      &kp LEFT  &kp DOWN  &kp RIGHT  &kp COLON  &kp GRAVE
-                &trans  &kp ASTRK  &kp PIPE  &kp LBRC  &kp RBRC  &kp DLLR     &kp LA(LSHFT)  &kp PLUS  &kp HASH  &kp AT     &kp BSLH   &trans
-                                          &trans    &trans    &trans       &trans         &trans
-            >;
-        };
+		SYMBOLS {
+			bindings = <
+				&trans  &kp TILDE  &kp LT    &kp LBKT  &kp RBKT  &kp EXCL     &kp PRCNT      &kp HOME  &kp UP    &kp END    &kp MINUS  &kp DEL
+				&trans  &kp AMPS   &kp GT    &kp LPAR  &kp RPAR  &kp EQUAL    &kp CARET      &kp LEFT  &kp DOWN  &kp RIGHT  &kp COLON  &kp GRAVE
+				&trans  &kp ASTRK  &kp PIPE  &kp LBRC  &kp RBRC  &kp DLLR     &kp LA(LSHFT)  &kp PLUS  &kp HASH  &kp AT     &kp BSLH   &trans
+				&trans    &trans    &trans       &trans         &trans
+			>;
+		};
 
-        NUMBERS {
-            bindings = <
-                &trans  &kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
-                &trans  &kp KP_NUM  &kp F4  &kp F5  &kp F6  &kp F11    &kp N0     &kp N4  &kp N5  &kp N6  &kp ASTRK  &none
-                &trans  &kp PSCRN   &kp F1  &kp F2  &kp F3  &kp F12    &none      &kp N1  &kp N2  &kp N3  &kp FSLH   &trans
-                                          &trans  &trans  &trans     &trans     &trans
-            >;
-        };
+		NUMBERS {
+			bindings = <
+				&trans  &kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
+				&caps_word  &kp KP_NUM  &kp F4  &kp F5  &kp F6  &kp F11    &kp N0     &kp N4  &kp N5  &kp N6  &kp ASTRK  &none
+				&trans  &kp PSCRN   &kp F1  &kp F2  &kp F3  &kp F12    &none      &kp N1  &kp N2  &kp N3  &kp FSLH   &trans
+				&trans  &trans  &trans     &trans     &trans
+			>;
+		};
 
-        COMBO {
-            bindings = <
-                &none  &none       &none     &none      &mkp MCLK  &mkp MB4  &none    &msc SCRL_DOWN  &mmv MOVE_UP    &msc SCRL_UP     &none  &mo SETTINGS
-                &none  &caps_word  &none     &mkp LCLK  &mkp RCLK  &none     &none    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
-                &none  &none       &none     &none      &none      &none     &none    &none  &none    &none    &none  &none
-                                              &none      &trans     &trans    &none    &trans
-            >;
-        };
+		COMBO {
+			bindings = <
+				&none	&none	&none	&none	&mkp MCLK  &mkp MB4  &none    &msc SCRL_DOWN  &mmv MOVE_UP    &msc SCRL_UP     &none  &mo SETTINGS
+				&none	&none	&none	&mkp LCLK  &mkp RCLK  &none     &none    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
+				&trans	&none	&none	&none	&none      &none     &none    &none  &none    &none    &none  &none
+				&none      &trans     &trans    &none    &trans
+			>;
+		};
 
-        SETTINGS {
-            bindings = <
-                &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none       &kp C_VOL_UP  &none  &none        &kp ESC
-                &none       &none         &none         &none         &none         &none           &none  &kp C_MUTE  &kp C_VOL_DN  &none  &none        &none
-                &none       &sys_reset    &none         &none         &out OUT_USB  &out OUT_BLE    &none  &none       &none         &none  &bootloader  &none
-                                                  &trans         &trans        &trans          &trans  &trans
-            >;
-        };
-    };
+		SETTINGS {
+			bindings = <
+				&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none       &kp C_VOL_UP  &none  &none        &trans
+				&none       &none         &none         &none         &none         &none           &none  &kp C_MUTE  &kp C_VOL_DN  &none  &none        &none
+				&none       &sys_reset    &none         &none         &out OUT_USB  &out OUT_BLE    &none  &none       &none         &none  &none  &none
+				&none         &trans        &none          &trans  &none
+			>;
+		};
+
+		MACROS {
+			bindings = <
+				&none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none
+				&none	&none	&none	&none	&none	&none	&m_mail_personal	&none	&none	&none	&none	&none
+				&none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none
+				&none   &none	&trans	&none	&none
+			>;
+		};
+	};
 };
