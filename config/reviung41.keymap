@@ -84,7 +84,7 @@
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none       &kp C_VOL_UP  &none  &none        &trans
 &none       &none         &none         &none         &none         &none           &none  &kp C_MUTE  &kp C_VOL_DN  &none  &none        &none
 &none       &sys_reset    &none         &none         &out OUT_USB  &out OUT_BLE    &none  &none       &none         &none  &bootloader  &none
-                                        &none         &trans        &trans          &none  &trans
+                                        &none         &trans        &studio_unlock          &none  &trans
             >;
         };
     };
