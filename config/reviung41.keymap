@@ -74,7 +74,7 @@
 
         NUMBERS {
             bindings = <
-tran senteirsnt  &kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
+&trans	&kp CAPS    &kp F7  &kp F8  &kp F9  &kp F10    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp PLUS   &trans
 &trans  &kp KP_NUM  &kp F4  &kp F5  &kp F6  &kp F11    &kp N0     &kp N4  &kp N5  &kp N6  &kp ASTRK  &none
 &trans  &kp PSCRN   &kp F1  &kp F2  &kp F3  &kp F12    &none      &kp N1  &kp N2  &kp N3  &kp FSLH   &trans
                             &trans  &trans  &trans     &trans     &trans
