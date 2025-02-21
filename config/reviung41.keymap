@@ -56,7 +56,7 @@
             bindings = <
 &trans  &kp TILDE    &kp LT  &kp LBKT  &kp RBKT   &kp EXCL          &kp PRCNT  &kp HOME    &kp UP    &kp END  &kp MINUS    &kp DEL
 &trans   &kp AMPS    &kp GT  &kp LPAR  &kp RPAR  &kp EQUAL          &kp CARET  &kp LEFT  &kp DOWN  &kp RIGHT  &kp COLON  &kp GRAVE
-&trans  &kp ASTRK  &kp PIPE  &kp LBRC  &kp RBRC   &kp DLLR             &trans  &jsArrow  &kp HASH     &kp AT   &kp BSLH     &trans
+&trans  &kp ASTRK  &kp PIPE  &kp LBRC  &kp RBRC   &kp DLLR             &trans  &macro jsArrow  &kp HASH     &kp AT   &kp BSLH     &trans
                                &trans    &trans             &trans               &trans    &trans
             >;
         };
